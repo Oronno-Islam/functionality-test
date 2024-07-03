@@ -1,1 +1,26 @@
-
+<%- include('partials/header') %>
+<div class="container">
+    <aside>
+      <nav>
+        <ul>
+          <li><a href="/add">Add New Blog</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <h2>Blogs</h2>
+      <ul>
+        <% blogs.forEach((blog) => { %>
+          <li>
+            <h3><%= blog.title %></h3>
+            <p><%= blog.content %></p>
+            <a href="/<%= blog.id %>/edit">Edit</a>
+            <form action="/<%= blog.id %>?_method=DELETE" method="POST" style="display:inline;">
+              <button type="submit">Delete</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+    </main>
+  </div>
+<%- include('partials/footer') %>
